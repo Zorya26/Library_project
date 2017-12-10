@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+    {% for book in books %}
+        <h2><a href="{% url 'book' book.id %}">{{ book.title }}</a></h2>
+        <h4>{{ book.author }}</h4>
+        <h4>{{ book.genre }}</h4>  
+          <pre>{{ book.get_short_description }}</pre>
+         <div>
+             {% if book.image %}
+                 <p> <img src="{{MEDIA_URL}}{{ book.image.url}}"></p>
+             {% endif %}
+        </div>
+    {% endfor %}
+    
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    {{ book.book_title }}
+{% endblock %}
+
+{% block content %}
+<div class="block1">
+    <div class="info_book">
+        <table>
+    <tr>
+    <td rowspan="4">
+        <div class="image">
+             {% if book.book_image %}
+                <p> <img src="{{MEDIA_URL}}{{ book.book_image.url}}"></p>
+             {% endif %}
+        </div>
+    </td>
+
+<td>
+    <h1>{{ book.title }}</h1>
+    </td>
+        </tr>
+
+        <tr>
+    <td>
+    <p class="muted">Автор: <strong>{{ book.book_author }}</strong></p>
+</td>
+        </tr>
+        <tr>
+    <td>
+        <h2>{{ book.book_year }}</h2>
+        </td>
+        </tr>
+        <tr>
+    <td>
+        <h2>{{ book.book_genre }}</h2>
+        </td>
+        </tr>
+ </table>
+        <h6>{{ book.book_description }}</h6>
+
+
+    </div>
+
+</div>
+    <button type="submit">
+            <a href="{{MEDIA_URL}}{{ book.book_text.url}}" download>Download</a></button>
+    <br>
+    <p><a href="/book/add_like/{{ book.id }}/"><img src="{% static 'media/images/like.png' %}" width="25px" height="25px"></a>{{ book.book_likes }}</p>
+
+{% endblock %}

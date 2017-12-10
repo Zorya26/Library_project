@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+    {% for book in books %}
+        <h2><a href="{% url 'book' book.id %}">{{ book.book_title }}</a></h2>
+        <h4>{{ book.book_author }}</h4>
+        <h4>{{ book.book_genre }}</h4>
+          <pre>{{ book.get_short_description }}</pre>
+         <div>
+{% if book.book_image %}
+    <p> <img src="{{MEDIA_URL}}{{ book.book_image.url}}"></p>
+{% endif %}
+</div>
+
+
+
+
+
+{#        <table width="100%">#}
+{#            <tr>#}
+{#                <td width="50%">#}
+{#                    <a href="{{ object.get_absolute_url }}addlike/?next={{ object.get_absolute_url|urlencode:"" }}"><img src="{% static 'media/images/like.png' %}" width="25px" height="25px">#}
+{#                       </a> <span class="lead">{{ object.likes }}</span>#}
+{#                    &nbsp;&nbsp;&nbsp;#}
+{#                   </td>#}
+    <p><a href="add_like/{{ book.id }}/"><img src="{% static 'media/images/like.png' %}" width="25px" height="25px"></a>{{ book.book_likes }}</p>
+
+            </tr>
+        </table>
+        <br>
+{% endfor %}
+
+{% endblock %}
