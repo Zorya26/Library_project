@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'library.apps.LibraryConfig',
-    'library'
+    'library',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,10 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "library/static", "media")
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '327183257741-6s8da0gv3etp54r0q9ipd6svsi770fer'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JW_4POa3i7c70CwWxy77y0uP'
+
+AUTHENTICATION_BACKENDS = ('social_core.backends.google.GoogleOAuth2',
+'django.contrib.auth.backends.ModelBackend',)

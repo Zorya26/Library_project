@@ -10,8 +10,8 @@ class BookInline(admin.StackedInline):
 
 
 class BookAdmin(admin.ModelAdmin):
-    fields = ['id', 'book_title', 'book_image', 'book_author', 'book_year', 'book_genre', 'book_description', 'book_text', 'book_likes']
-    list_display = ('id', 'book_title', 'book_author', 'book_genre', 'bit', 'book_text', 'book_likes')
+    fields = ['book_title', 'book_image', 'book_author', 'book_year', 'book_genre', 'book_description', 'book_text', 'book_pages', 'book_lang', 'book_lang_origin', 'book_trans', 'book_publisher', 'book_publisher_city']
+    list_display = ('book_title', 'book_author', 'book_genre', 'bit', 'book_text', 'book_likes', 'book_pages', 'book_lang', 'book_lang_origin', 'book_trans', 'book_publisher', 'book_publisher_city', 'book_dislikes',)
     inlines = [BookInline]
     list_filter = ['book_genre']
 

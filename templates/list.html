@@ -5,19 +5,115 @@
 {% endblock %}
 
 {% block content %}
+    <script src="{% static 'library/js/jquery.js' %}"></script>
+    <script src="{% static 'library/js/owl.carousel.min.js' %}"></script>
+    <style>
+    body {
+    padding-top: 5rem;
+    background-color: #F5F5F5;
+}
+    .block3
+    {
+
+				padding: 10px;
+				margin: auto;
+				background: white;
+    }
+    .block2
+    {
+        width: 55vw;
+				padding: 10px;
+				margin: auto;
+
+    }
+    </style>
+<style>
+   h1 {
+    text-indent: 10px; /* Отступ первой строки в пикселах */
+       font-size: 16px;
+       font-family: RobotoBold;
+    border-bottom: 1px solid #e4e4e4;
+   }
+.desc1 {
+    color: #666;
+    font-size: 13px;
+    padding-left: 12px;
+
+}
+.desc2 {
+    color: #000;
+    font-size: 13px;
+
+}
+table{
+    border-color: transparent;
+}
+  </style>
+
+<br>
+
+        <br>
+        <br>
+<table border="1" cellpadding="5" align="center">
+   <tr>
+       <td><img src="{% static 'media/images/dt.jpg' %}" width="100px"></td>
+    <td><img src="{% static 'media/images/gmc.jpg' %}" width="100px"></td>
+        <td><img src="{% static 'media/images/dt.jpg' %}" width="100px"></td>
+    <td><img src="{% static 'media/images/gmc.jpg' %}" width="100px"></td>
+         <td><img src="{% static 'media/images/dt.jpg' %}" width="100px"></td>
+    <td><img src="{% static 'media/images/gmc.jpg' %}" width="100px"></td>
+  </tr>
+ </table>
+ <div class="block2">
+
+        <br>
+            <font size="5" color="black"><b>Все книги</b></font>
+        <hr>
 
     {% for book in books %}
-        <h2><a href="{% url 'book' book.id %}">{{ book.book_title }}</a></h2>
-        <h4>{{ book.book_author }}</h4>
-        <h4>{{ book.book_genre }}</h4>
-          <pre>{{ book.get_short_description }}</pre>
-         <div>
-{% if book.book_image %}
-    <p> <img src="{{MEDIA_URL}}{{ book.book_image.url}}"></p>
-{% endif %}
+<div class="block3">
+        <table>
+    <tr>
+    <td rowspan="6">
+        <div class="image">
+             {% if book.book_image %}
+                <p> <img src="{{MEDIA_URL}}{{ book.book_image.url}}" height="400"></p>
+             {% endif %}
+        </div>
+    </td>
+<td>
+    <h1><a href="{% url 'book' book.id %}">{{ book.book_title }}</a></h1>
+    </td>
+        </tr>
+<tr>
+    <td>
+        <h2><span class="desc1">Понравилось: </span><span class="desc2">{{ book.book_likes }} | </span><span class="desc1">Не понравилось: </span><span class="desc2">{{ book.book_dislikes }}</span></h2>    </td>
+</tr>
+        <tr>
+    <td>
+
+        <h2><span class="desc1">Автор: </span><span class="desc2">{{ book.book_author }}</span></h2>
+</td>
+        </tr>
+        <tr>
+    <td>
+        <h2><span class="desc1">Жанр: </span><span class="desc2">{{ book.book_genre }}</span></h2>
+        </td>
+        </tr>
+        <tr>
+    <td>
+        <h2><span class="desc1">Год: </span><span class="desc2">{{ book.book_year }}</span><span class="desc1"> | Язык книги: </span><span class="desc2">{{ book.book_lang }}</span><span class="desc1"> | Страниц: </span><span class="desc2">{{ book.book_pages }}</span></h2>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                 <p>{{ book.book_description }}</p>
+            </td>
+        </tr>
+ </table>
+
+
 </div>
-
-
 
 
 
@@ -28,11 +124,10 @@
 {#                       </a> <span class="lead">{{ object.likes }}</span>#}
 {#                    &nbsp;&nbsp;&nbsp;#}
 {#                   </td>#}
-    <p><a href="add_like/{{ book.id }}/"><img src="{% static 'media/images/like.png' %}" width="25px" height="25px"></a>{{ book.book_likes }}</p>
 
-            </tr>
-        </table>
+
         <br>
-{% endfor %}
 
+{% endfor %}
+</div>
 {% endblock %}

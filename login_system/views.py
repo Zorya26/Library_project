@@ -10,6 +10,11 @@ from django.views.generic.base import View
 from django.contrib.auth import logout
 
 
+def save_profile(backend, user, response, *args, **kwargs):
+    if backend.name == "google-oauth2":
+        a = "/"
+
+
 class RegisterFormView(FormView):
     form_class = UserCreationForm
     # Ссылка, на которую будет перенаправляться пользователь в случае успешной регистрации.

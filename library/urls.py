@@ -27,8 +27,12 @@ urlpatterns = [
     # url(r'^list/(?P<genre_id>[0-9]+)/$', views.genre_list, name='genre_list'),
     url(r'^list/book/(?P<book_id>[0-9]+)/$', views.book, name='book'),
     url(r'^add_like/(?P<book_id>[0-9]+)/$', views.add_like, name='add_like'),
+    url(r'^add_dislike/(?P<book_id>[0-9]+)/$', views.add_dislike, name='add_dislike'),
+    url(r'^addcomment/(?P<book_id>[0-9]+)/$', views.addcomment, name='addcomment'),
+    # url(r'^addcomment/(?P<book_id>[0-9]+)/$', views.addcomment, name='addcomment')
     # url(r'^sign_in/$', views.sign_in, name='sign in'),
     # url(r'^registration/$', views.registration, name='registration')
+
 ]
 
 if settings.DEBUG:
